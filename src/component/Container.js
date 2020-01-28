@@ -10,11 +10,10 @@ class Container extends React.Component {
   handleClick = () => {
     this.setState({ visiible: true });
   };
-  clickHadler = () => this.state.inputValue;
   render() {
     return (
       <div>
-        <h2>add items{this.state.inputValue}</h2>
+        <h2 id="watcher">add items</h2>
         <h2>watch here {this.state.visiible && this.state.inputValue}</h2>
         <input
           type="text"
@@ -23,9 +22,11 @@ class Container extends React.Component {
         />
         <button onClick={this.handleClick}>click</button>
         <button
-          onClick={() => {
-            console.log(this.clickHadler);
-          }}
+          onClick={() =>
+            (document.getElementById(
+              "watcher"
+            ).innerText = this.state.inputValue)
+          }
         >
           add
         </button>
