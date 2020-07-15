@@ -38,8 +38,12 @@ class Form extends React.Component {
   }
   componentDidMount() {
     const itemsFromLocalStorage = localStorage.getItem("TodoItem");
-    const readerableLists = JSON.parse(itemsFromLocalStorage);
-    this.setState({ todoItems: readerableLists });
+    if (itemsFromLocalStorage === null) {
+      return;
+    } else {
+      const readerableLists = JSON.parse(itemsFromLocalStorage);
+      this.setState({ todoItems: readerableLists });
+    }
   }
 
   handleRemoveOneItem = itemToBeRemoved => {

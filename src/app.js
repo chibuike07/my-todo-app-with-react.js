@@ -7,21 +7,9 @@ const TodoItems = () => {
     <div>
       <h2 className={styles.bigblue}>i render individual to items</h2>
       <Header name="chibuike" />
-      {/* <DropDown myCar="volvo" /> */}
     </div>
   );
 };
-
-// const DropDown = props => {
-//   return (
-//     <select value={props.myCar}>
-//       <option value="toyota">toyota</option>
-//       <option value="benz">benz</option>
-//       <option value="volvo">volvo</option>
-//       <option value="voz">voz</option>
-//     </select>
-//   );
-// };
 
 class Input extends React.Component {
   constructor(props) {
@@ -34,7 +22,6 @@ class Input extends React.Component {
     if (name === "chibuike") {
       alert("name incorrect");
     }
-    // alert(this.state.user);
   };
   onChangeHandler = event => {
     this.setState({ user: event.target.value });
@@ -49,7 +36,6 @@ class Input extends React.Component {
           onChange={this.onChangeHandler}
           placeholder="add value"
         />
-        {/* <DropDown myCar="benz" /> */}
       </form>
     );
   }
