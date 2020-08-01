@@ -59,7 +59,7 @@ class Form extends React.Component {
   };
   render() {
     return (
-      <div>
+      <div className="container">
         <div className="header">
           <h2>welcome to my todo app</h2>
         </div>

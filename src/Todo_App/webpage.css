@@ -1,3 +1,11 @@
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+}
+.container {
+  width: 100%;
+}
 .header {
   display: flex;
   justify-content: center;
@@ -81,4 +89,7 @@ form button {
   height: 7vh;
   font-size: large;
   background-color: #ff0000;
+}
+
+@media only screen and (max-width: 500px) {
 }
