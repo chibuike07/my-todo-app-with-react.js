@@ -3,14 +3,14 @@ import "./webpage.css";
 class Form extends React.Component {
   state = {
     todoItems: [],
-    newTodo: ""
+    newTodo: "",
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({ newTodo: e.target.value });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     if (this.state.newTodo) {
       if (this.state.todoItems.includes(this.state.newTodo.toLowerCase())) {
@@ -20,9 +20,9 @@ class Form extends React.Component {
         this.setState({
           todoItems: [
             ...this.state.todoItems,
-            this.state.newTodo.toLowerCase()
+            this.state.newTodo.toLowerCase(),
           ],
-          newTodo: ""
+          newTodo: "",
         });
       }
     } else {
@@ -46,11 +46,11 @@ class Form extends React.Component {
     }
   }
 
-  handleRemoveOneItem = itemToBeRemoved => {
-    this.setState(prevState => ({
+  handleRemoveOneItem = (itemToBeRemoved) => {
+    this.setState((prevState) => ({
       todoItems: prevState.todoItems.filter(
-        arrValue => arrValue !== itemToBeRemoved
-      )
+        (arrValue) => arrValue !== itemToBeRemoved
+      ),
     }));
   };
 
@@ -66,28 +66,34 @@ class Form extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="">todo items</label>
           <br />
-          <br />
-          <input
-            type="text"
-            value={this.state.newTodo}
-            onChange={this.handleChange}
-            placeholder="add your Todos..."
-          />
-          <button>submit</button>
+          <div className="field">
+            <input
+              type="text"
+              value={this.state.newTodo}
+              onChange={this.handleChange}
+              placeholder="add your Todos..."
+            />
+            <button>add</button>
+          </div>
         </form>
+
         <div className="ul">
           <ul>
             {this.state.todoItems &&
               this.state.todoItems.map((item, i) => (
                 <li key={i}>
-                  {item}
+                  <p>
+                    <span>{item[0].toUpperCase()}</span>
+                    {item.slice(1)}
+                  </p>
+
                   <button
                     id="btn"
                     onClick={() => this.handleRemoveOneItem(item)}
                   >
                     <b
                       style={{
-                        fontSize: 25
+                        fontSize: 25,
                       }}
                     >
                       x
@@ -97,11 +103,13 @@ class Form extends React.Component {
               ))}
           </ul>
         </div>
-        <div id="rmv">
-          {this.handleDisplayRemoveBtn}
-          {this.state.todoItems.length > 0 && (
-            <button onClick={this.handleRemoveAllItems}>removeAll</button>
-          )}
+        <div className="rmv-wrapper">
+          <div className="rmv">
+            {this.handleDisplayRemoveBtn}
+            {this.state.todoItems.length > 0 && (
+              <button onClick={this.handleRemoveAllItems}>clear</button>
+            )}
+          </div>
         </div>
       </div>
     );
